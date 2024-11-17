@@ -64,5 +64,41 @@ Write an efficient algorithm for the following assumptions:
 ## Solution
 
 ```java
+// you can also use imports, for example:
+// import java.util.*;
 
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int[] solution(int N, int[] A) {
+        int[] counters = new int[N];
+        int baseMax = 0;
+        int maxCounter = 0;
+        for (int a : A) {
+            if (a == N+1) {
+                baseMax = maxCounter;
+                continue;
+            }
+
+            if (counters[a-1] < baseMax) {
+                counters[a-1] = baseMax;    
+            }
+
+            counters[a-1]++;
+
+            if (maxCounter < counters[a-1]) {
+                maxCounter = counters[a-1];
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (counters[i] < baseMax) {
+                counters[i] = baseMax;
+            }
+        }
+
+        return counters;
+    }
+}
 ```

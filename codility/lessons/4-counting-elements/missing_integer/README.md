@@ -26,5 +26,30 @@ Write an efficient algorithm for the following assumptions:
 ## Solution
 
 ```java
+// you can also use imports, for example:
+// import java.util.*;
 
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        int N = A.length;
+        boolean[] present = new boolean[N + 1];
+
+        for (int num : A) {
+            if (num > 0 && num <= N) {
+                present[num] = true;
+            }
+        }
+
+        for (int i = 1; i <= N; i++) {
+            if (!present[i]) {
+                return i;
+            }
+        }
+
+        return N + 1;
+    }
+}
 ```
